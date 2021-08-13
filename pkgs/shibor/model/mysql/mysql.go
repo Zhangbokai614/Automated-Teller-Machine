@@ -8,7 +8,6 @@ import (
 
 const (
 	mysqlInster = iota
-	mysqlQuery
 )
 
 var (
@@ -16,7 +15,6 @@ var (
 
 	shiborSQLString = []string{
 		`INSERT INTO shibor(infodate, overnight, 1w, 2w, 1m, 3m, 6m, 9m, 1y) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-		`SELECT infodate, overnight, 1w, 2w, 1m, 3m, 6m, 9m, 1y FROM shibor `,
 	}
 )
 
