@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"time"
 )
 
 const (
@@ -19,7 +20,7 @@ var (
 )
 
 func InsertShibor(
-	db *sql.DB, InfoDate string, OverNight, OneWeek, TwoWeek,
+	db *sql.DB, InfoDate time.Time, OverNight, OneWeek, TwoWeek,
 	OneMonth, ThreeMonth, SixMonth, NineMonth, OneYear float32,
 ) error {
 	sql := fmt.Sprintf(shiborSQLString[mysqlInster])

@@ -19,7 +19,7 @@ puppeteer.launch({ headless: true }).then(async browser => {
 
   await browser.close()
 
-  let data = { date: origin.data.showDateCN.substring(0, 10) }
+  let data = { date: new Date(origin.data.showDateCN).toISOString()}
   origin.records.map(item => {
     data[item.termCode] = +item.shibor
   })

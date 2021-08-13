@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/Zhangbokai614/Automated-Teller-Machine/pkgs/shibor/model/mysql"
 	"github.com/gin-gonic/gin"
@@ -30,15 +31,15 @@ func (b *ShiborController) RegisterRouter(r gin.IRouter) {
 func (b *ShiborController) update(c *gin.Context) {
 	var (
 		req struct {
-			InfoDate   string  `json:"date,omitempty"`
-			OverNight  float32 `json:"O/N,omitempty"`
-			OneWeek    float32 `json:"1W,omitempty"`
-			TwoWeek    float32 `json:"2W,omitempty"`
-			OneMonth   float32 `json:"1M,omitempty"`
-			ThreeMonth float32 `json:"3M,omitempty"`
-			SixMonth   float32 `json:"6M,omitempty"`
-			NineMonth  float32 `json:"9M,omitempty"`
-			OneYear    float32 `json:"1Y,omitempty"`
+			InfoDate   time.Time `json:"date,omitempty"`
+			OverNight  float32   `json:"O/N,omitempty"`
+			OneWeek    float32   `json:"1W,omitempty"`
+			TwoWeek    float32   `json:"2W,omitempty"`
+			OneMonth   float32   `json:"1M,omitempty"`
+			ThreeMonth float32   `json:"3M,omitempty"`
+			SixMonth   float32   `json:"6M,omitempty"`
+			NineMonth  float32   `json:"9M,omitempty"`
+			OneYear    float32   `json:"1Y,omitempty"`
 		}
 	)
 
