@@ -14,6 +14,6 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY --from=builder /go/src/app/app .
 
-EXPOSE 8080
+EXPOSE 8081
 
 ENTRYPOINT ["./app"]

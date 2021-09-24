@@ -24,5 +24,5 @@ func main() {
 	lprCon := lpr.New(dbConn)
 	lprCon.RegisterRouter(router.Group("api/v1"))
 
-	log.Fatal(router.Run(":8080"))
+	log.Fatal(router.Run(":8081"))
 }
