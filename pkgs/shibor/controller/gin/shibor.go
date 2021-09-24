@@ -25,10 +25,11 @@ func (b *ShiborController) RegisterRouter(r gin.IRouter) {
 		log.Fatal("[InitRouter]: server is nil")
 	}
 
-	r.POST("/update/shibor", b.update)
+	r.POST("/post/shibor", b.post)
+	r.GET("/get/shibor", b.get)
 }
 
-func (b *ShiborController) update(c *gin.Context) {
+func (b *ShiborController) post(c *gin.Context) {
 	var (
 		req struct {
 			InfoDate   time.Time `json:"date,omitempty"`
@@ -59,4 +60,16 @@ func (b *ShiborController) update(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK})
+}
+
+func (b *ShiborController) get(c *gin.Context) {
+	shibor, err := mysql.QueryShibor(b.db)
+
+	if err != nil {
+		c.Error(err)
+		c.JSON(http.StatusBadGateway, gin.H{"status": http.StatusBadGateway})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "shibor": shibor})
 }
