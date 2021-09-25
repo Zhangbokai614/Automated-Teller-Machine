@@ -5,7 +5,10 @@ import (
 	"log"
 
 	lpr "github.com/Zhangbokai614/Automated-Teller-Machine/pkgs/lpr/controller/gin"
+	pboc "github.com/Zhangbokai614/Automated-Teller-Machine/pkgs/pboc/controller/gin"
+	prr "github.com/Zhangbokai614/Automated-Teller-Machine/pkgs/prr/controller/gin"
 	shibor "github.com/Zhangbokai614/Automated-Teller-Machine/pkgs/shibor/controller/gin"
+
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -23,6 +26,12 @@ func main() {
 
 	lprCon := lpr.New(dbConn)
 	lprCon.RegisterRouter(router.Group("api/v1"))
+
+	prrCon := prr.New(dbConn)
+	prrCon.RegisterRouter(router.Group("api/v1"))
+
+	pbocCon := pboc.New(dbConn)
+	pbocCon.RegisterRouter(router.Group("api/v1"))
 
 	log.Fatal(router.Run(":8081"))
 }
