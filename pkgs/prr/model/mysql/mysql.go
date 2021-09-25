@@ -68,7 +68,7 @@ func QueryPrr(db *sql.DB) ([]*Prr, error) {
 
 	for rows.Next() {
 		if err := rows.Scan(
-			&infoDate, &one_day, &seven_day, &seven_day, &fourteen_day, &twentyone_day, &one_month, &two_month); err != nil {
+			&infoDate, &one_day, &seven_day, &fourteen_day, &twentyone_day, &one_month, &two_month); err != nil {
 			return nil, err
 		}
 
